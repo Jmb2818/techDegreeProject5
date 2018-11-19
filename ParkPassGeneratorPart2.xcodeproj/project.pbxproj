@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0BF55BF621953F390086AAF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF55BF521953F390086AAF0 /* AppDelegate.swift */; };
-		0BF55BF821953F390086AAF0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF55BF721953F390086AAF0 /* ViewController.swift */; };
 		0BF55BFB21953F390086AAF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BF55BF921953F390086AAF0 /* Main.storyboard */; };
 		0BF55BFD21953F3C0086AAF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BF55BFC21953F3C0086AAF0 /* Assets.xcassets */; };
 		0BF55C0021953F3C0086AAF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BF55BFE21953F3C0086AAF0 /* LaunchScreen.storyboard */; };
@@ -26,12 +25,14 @@
 		0BF55C1E219541A30086AAF0 /* DateEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF55C1D219541A30086AAF0 /* DateEditor.swift */; };
 		0BF55C20219541B80086AAF0 /* GeneratorError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF55C1F219541B80086AAF0 /* GeneratorError.swift */; };
 		0BF55C22219541C40086AAF0 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF55C21219541C40086AAF0 /* Test.swift */; };
+		0BF55C26219D30860086AAF0 /* PassGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF55C25219D30860086AAF0 /* PassGeneratorViewController.swift */; };
+		0BF55C28219E735C0086AAF0 /* EntrantType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF55C27219E735C0086AAF0 /* EntrantType.swift */; };
+		0BF55C2A219E74FE0086AAF0 /* StackViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF55C29219E74FE0086AAF0 /* StackViewButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0BF55BF221953F390086AAF0 /* ParkPassGeneratorPart2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkPassGeneratorPart2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF55BF521953F390086AAF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0BF55BF721953F390086AAF0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0BF55BFA21953F390086AAF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0BF55BFC21953F3C0086AAF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0BF55BFF21953F3C0086AAF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -50,6 +51,9 @@
 		0BF55C1D219541A30086AAF0 /* DateEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEditor.swift; sourceTree = "<group>"; };
 		0BF55C1F219541B80086AAF0 /* GeneratorError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratorError.swift; sourceTree = "<group>"; };
 		0BF55C21219541C40086AAF0 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		0BF55C25219D30860086AAF0 /* PassGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassGeneratorViewController.swift; sourceTree = "<group>"; };
+		0BF55C27219E735C0086AAF0 /* EntrantType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrantType.swift; sourceTree = "<group>"; };
+		0BF55C29219E74FE0086AAF0 /* StackViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +87,8 @@
 			isa = PBXGroup;
 			children = (
 				0BF55BF521953F390086AAF0 /* AppDelegate.swift */,
-				0BF55BF721953F390086AAF0 /* ViewController.swift */,
+				0BF55C25219D30860086AAF0 /* PassGeneratorViewController.swift */,
+				0BF55C29219E74FE0086AAF0 /* StackViewButton.swift */,
 				0BF55BF921953F390086AAF0 /* Main.storyboard */,
 				0BF55BFC21953F3C0086AAF0 /* Assets.xcassets */,
 				0BF55BFE21953F3C0086AAF0 /* LaunchScreen.storyboard */,
@@ -107,6 +112,7 @@
 				0BF55C15219540CE0086AAF0 /* AreaAccess.swift */,
 				0BF55C172195413F0086AAF0 /* DiscountAccess.swift */,
 				0BF55C192195417B0086AAF0 /* RideAccess.swift */,
+				0BF55C27219E735C0086AAF0 /* EntrantType.swift */,
 			);
 			path = "Model Enumerations";
 			sourceTree = "<group>";
@@ -199,15 +205,17 @@
 				0BF55C0A21953FD00086AAF0 /* Entrant.swift in Sources */,
 				0BF55C14219540B00086AAF0 /* ManagerType.swift in Sources */,
 				0BF55C22219541C40086AAF0 /* Test.swift in Sources */,
-				0BF55BF821953F390086AAF0 /* ViewController.swift in Sources */,
 				0BF55C20219541B80086AAF0 /* GeneratorError.swift in Sources */,
 				0BF55C0821953FB70086AAF0 /* Pass.swift in Sources */,
 				0BF55C12219540340086AAF0 /* GuestType.swift in Sources */,
+				0BF55C2A219E74FE0086AAF0 /* StackViewButton.swift in Sources */,
 				0BF55C16219540CE0086AAF0 /* AreaAccess.swift in Sources */,
 				0BF55C1C2195418C0086AAF0 /* SwipeResult.swift in Sources */,
+				0BF55C26219D30860086AAF0 /* PassGeneratorViewController.swift in Sources */,
 				0BF55C0E219540120086AAF0 /* GuestPass.swift in Sources */,
 				0BF55C0C21953FE30086AAF0 /* EmployeePass.swift in Sources */,
 				0BF55C182195413F0086AAF0 /* DiscountAccess.swift in Sources */,
+				0BF55C28219E735C0086AAF0 /* EntrantType.swift in Sources */,
 				0BF55BF621953F390086AAF0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
