@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BBCF45D21A3A873006E8477 /* VendorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCF45C21A3A873006E8477 /* VendorType.swift */; };
 		0BF55BF621953F390086AAF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF55BF521953F390086AAF0 /* AppDelegate.swift */; };
 		0BF55BFB21953F390086AAF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BF55BF921953F390086AAF0 /* Main.storyboard */; };
 		0BF55BFD21953F3C0086AAF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BF55BFC21953F3C0086AAF0 /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0BBCF45C21A3A873006E8477 /* VendorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorType.swift; sourceTree = "<group>"; };
 		0BF55BF221953F390086AAF0 /* ParkPassGeneratorPart2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkPassGeneratorPart2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF55BF521953F390086AAF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BF55BFA21953F390086AAF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				0BF55C172195413F0086AAF0 /* DiscountAccess.swift */,
 				0BF55C192195417B0086AAF0 /* RideAccess.swift */,
 				0BF55C27219E735C0086AAF0 /* EntrantType.swift */,
+				0BBCF45C21A3A873006E8477 /* VendorType.swift */,
 			);
 			path = "Model Enumerations";
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				0BF55C182195413F0086AAF0 /* DiscountAccess.swift in Sources */,
 				0BF55C28219E735C0086AAF0 /* EntrantType.swift in Sources */,
 				0BF55BF621953F390086AAF0 /* AppDelegate.swift in Sources */,
+				0BBCF45D21A3A873006E8477 /* VendorType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

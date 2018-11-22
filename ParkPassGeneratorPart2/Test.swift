@@ -51,7 +51,7 @@ class Test {
     
     func createClassicGuestPass() {
         do {
-            let pass = try GuestPass(entrant: guestEntrant, guestType: .classic)
+            let pass = try GuestPass(entrant: guestEntrant, guestType: .adult)
             testPass(pass: pass)
         } catch(let error) {
             print(error)
@@ -82,7 +82,7 @@ class Test {
     
     func createGuestBirthdayPass() {
         do {
-            let pass = try GuestPass(entrant: guestEntrantBirthday, guestType: .classic)
+            let pass = try GuestPass(entrant: guestEntrantBirthday, guestType: .adult)
             testPass(pass: pass)
         } catch(let error) {
             print(error)
@@ -91,7 +91,7 @@ class Test {
     
     func createPassSwipedTooSoon() {
         do {
-            let pass = try GuestPass(entrant: guestEntrant, guestType: .classic)
+            let pass = try GuestPass(entrant: guestEntrant, guestType: .adult)
             testPass(pass: pass)
             DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                 self.testPass(pass: pass)

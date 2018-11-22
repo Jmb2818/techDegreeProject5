@@ -10,7 +10,11 @@ import Foundation
 
 // An enumeration for each type of guest there can be
 enum GuestType: String {
-    case classic = "Classic Guest"
-    case vip = "VIP Guest"
-    case child = "Child Guest"
+    case adult = "Adult"
+    case vip = "VIP"
+    case child = "Child"
+    case senior = "Senior"
+    case seasonPass = "Season Pass"
 }
+
+extension GuestType: CaseIterable {}

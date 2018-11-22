@@ -10,8 +10,10 @@ import Foundation
 
 // Enumeration for each type of employee and associated formatted string for printout
 enum EmployeeType: String {
-    case food = "Food Service Employee"
-    case ride = "Ride Operator Employee"
-    case maintenance = "Maintenance Employee"
-    case manager = "Employee Manager"
+    case food = "Food"
+    case ride = "Ride Operator"
+    case maintenance = "Maintenance"
+    case manager = "Manager"
 }
+
+extension EmployeeType: CaseIterable {}

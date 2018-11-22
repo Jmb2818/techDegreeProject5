@@ -14,3 +14,5 @@ enum ManagerType: String {
     case generalManager = "General Manager"
     case seniorManager = "Senior Manager"
 }
+
+extension ManagerType: CaseIterable {}
