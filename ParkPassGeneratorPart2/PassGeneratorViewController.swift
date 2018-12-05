@@ -28,9 +28,22 @@ class PassGeneratorViewController: UIViewController {
     @IBOutlet weak var cityField: UITextField!
     @IBOutlet weak var stateField: UITextField!
     @IBOutlet weak var zipCodeField: UITextField!
+    @IBOutlet weak var dobLabel: UILabel!
+    @IBOutlet weak var ssnLabel: UILabel!
+    @IBOutlet weak var projectNumLabel: UILabel!
+    @IBOutlet weak var firstNameLabel: UILabel!
+    @IBOutlet weak var lastNameLabel: UILabel!
+    @IBOutlet weak var companyLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var stateLabel: UILabel!
+    @IBOutlet weak var zipCodeLabel: UILabel!
+    
     
     
     lazy var  mainButtons: [UIButton] = [guestButton, employeeButton, managerButton, vendorButton]
+    lazy var mainTextFields: [UITextField] = [dateOfBirthField, ssnField, projectField, firstNameField, lastNameField, companyField, addressField, cityField, stateField, zipCodeField]
+    lazy var mainLabels: [UILabel] = [dobLabel, ssnLabel, projectNumLabel, firstNameLabel, lastNameLabel, companyLabel, addressLabel, cityLabel, stateLabel, zipCodeLabel]
     
     
     override func viewDidLoad() {
@@ -109,6 +122,12 @@ class PassGeneratorViewController: UIViewController {
     
     @objc func layoutSubtype(sender: Any) {
         
+        for subView in entrantSubTypeStackView.subviews {
+            if let button = subView as? UIButton {
+                button.isSelected = false
+            }
+        }
+        
         guard let selectedSubButton = sender as? UIButton else { return }
         
         selectedSubButton.isSelected = true
@@ -126,38 +145,54 @@ class PassGeneratorViewController: UIViewController {
         case "Guest":
             if selectedSubButton.titleLabel?.text == "Child" {
                 dimFieldsExcept(enabledTextFields: [dateOfBirthField])
+                dimLabelsExcept(enabledLabels: [dobLabel])
             } else if selectedSubButton.titleLabel?.text == "Season Pass" {
                 dimFieldsExcept(enabledTextFields: [firstNameField,lastNameField, addressField, cityField, stateField, zipCodeField, dateOfBirthField])
+                dimLabelsExcept(enabledLabels: [firstNameLabel, lastNameLabel, addressLabel, cityLabel, stateLabel, zipCodeLabel, dobLabel])
             } else if selectedSubButton.titleLabel?.text == "Senior" {
                 dimFieldsExcept(enabledTextFields: [dateOfBirthField, firstNameField, lastNameField])
+                dimLabelsExcept(enabledLabels: [dobLabel, firstNameLabel, lastNameLabel])
             } else {
                 dimFieldsExcept(enabledTextFields: [])
+                dimLabelsExcept(enabledLabels: [])
             }
         case "Employee":
-            break
+            if selectedSubButton.titleLabel?.text == "Contract" {
+                dimFieldsExcept(enabledTextFields: [dateOfBirthField, ssnField, firstNameField, lastNameField, addressField, cityField, stateField, zipCodeField, projectField])
+                dimLabelsExcept(enabledLabels: [dobLabel, ssnLabel, firstNameLabel, lastNameLabel, addressLabel, cityLabel, stateLabel, zipCodeLabel, projectNumLabel])
+            } else {
+                dimFieldsExcept(enabledTextFields: [dateOfBirthField, ssnField, firstNameField, lastNameField, addressField, cityField, stateField, zipCodeField])
+                dimLabelsExcept(enabledLabels: [dobLabel, ssnLabel, firstNameLabel, lastNameLabel, addressLabel, cityLabel, stateLabel, zipCodeLabel])
+            }
         case "Manager":
-            break
+            dimFieldsExcept(enabledTextFields: [dateOfBirthField, ssnField, firstNameField, lastNameField, addressField, cityField, stateField, zipCodeField])
+            dimLabelsExcept(enabledLabels: [dobLabel, ssnLabel, firstNameLabel, lastNameLabel, addressLabel, cityLabel, stateLabel, zipCodeLabel])
         case "Vendor":
-            break
+            dimFieldsExcept(enabledTextFields: [firstNameField, lastNameField, companyField, dateOfBirthField])
+            dimLabelsExcept(enabledLabels: [firstNameLabel, lastNameLabel, companyLabel, dobLabel])
         default:
             break
         }
     }
     
     func dimFieldsExcept(enabledTextFields: [UITextField]) {
-        dateOfBirthField.isEnabled = false
-        ssnField.isEnabled = false
-        projectField.isEnabled = false
-        firstNameField.isEnabled = false
-        lastNameField.isEnabled = false
-        companyField.isEnabled = false
-        addressField.isEnabled = false
-        cityField.isEnabled = false
-        stateField.isEnabled = false
-        zipCodeField.isEnabled = false
+        for textField in mainTextFields {
+            textField.isEnabled = false
+            textField.backgroundColor = #colorLiteral(red: 0.8588235294, green: 0.8392156863, blue: 0.8745098039, alpha: 1)
+        }
         
         for textField in enabledTextFields {
             textField.isEnabled = true
+            textField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        }
+    }
+    
+    func dimLabelsExcept(enabledLabels: [UILabel]) {
+        for label in mainLabels {
+            label.isEnabled = false
+        }
+        for label in enabledLabels {
+            label.isEnabled = true
         }
     }
     

@@ -14,6 +14,7 @@ enum EmployeeType: String {
     case ride = "Ride Operator"
     case maintenance = "Maintenance"
     case manager = "Manager"
+    case contract = "Contract"
 }
 
 extension EmployeeType: CaseIterable {}
