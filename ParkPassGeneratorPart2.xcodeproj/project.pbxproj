@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B66110F21BA31AA00D171E2 /* PassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B66110E21BA31AA00D171E2 /* PassViewController.swift */; };
 		0BBCF45D21A3A873006E8477 /* VendorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCF45C21A3A873006E8477 /* VendorType.swift */; };
 		0BF55BF621953F390086AAF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF55BF521953F390086AAF0 /* AppDelegate.swift */; };
 		0BF55BFB21953F390086AAF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BF55BF921953F390086AAF0 /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B66110E21BA31AA00D171E2 /* PassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassViewController.swift; sourceTree = "<group>"; };
 		0BBCF45C21A3A873006E8477 /* VendorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorType.swift; sourceTree = "<group>"; };
 		0BF55BF221953F390086AAF0 /* ParkPassGeneratorPart2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkPassGeneratorPart2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF55BF521953F390086AAF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				0BF55C25219D30860086AAF0 /* PassGeneratorViewController.swift */,
 				0BF55C29219E74FE0086AAF0 /* StackViewButton.swift */,
 				0BF55BF921953F390086AAF0 /* Main.storyboard */,
+				0B66110E21BA31AA00D171E2 /* PassViewController.swift */,
 				0BF55BFC21953F3C0086AAF0 /* Assets.xcassets */,
 				0BF55BFE21953F3C0086AAF0 /* LaunchScreen.storyboard */,
 				0BF55C0121953F3C0086AAF0 /* Info.plist */,
@@ -215,6 +218,7 @@
 				0BF55C16219540CE0086AAF0 /* AreaAccess.swift in Sources */,
 				0BF55C1C2195418C0086AAF0 /* SwipeResult.swift in Sources */,
 				0BF55C26219D30860086AAF0 /* PassGeneratorViewController.swift in Sources */,
+				0B66110F21BA31AA00D171E2 /* PassViewController.swift in Sources */,
 				0BF55C0E219540120086AAF0 /* GuestPass.swift in Sources */,
 				0BF55C0C21953FE30086AAF0 /* EmployeePass.swift in Sources */,
 				0BF55C182195413F0086AAF0 /* DiscountAccess.swift in Sources */,
@@ -369,6 +373,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 953D3T58L6;
 				INFOPLIST_FILE = ParkPassGeneratorPart2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -387,6 +392,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 953D3T58L6;
 				INFOPLIST_FILE = ParkPassGeneratorPart2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

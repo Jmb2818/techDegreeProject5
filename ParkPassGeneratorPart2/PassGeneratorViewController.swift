@@ -48,7 +48,18 @@ class PassGeneratorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        layoutStackView(stackView: entrantTypeStackView)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        for field in mainTextFields {
+            field.delegate = self
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     
@@ -196,7 +207,36 @@ class PassGeneratorViewController: UIViewController {
         }
     }
     
+    @objc func keyboardWillShow(_ notification: Notification) {
+        // TODO: check screen size
+        guard !dateOfBirthField.isEditing,
+            !ssnField.isEditing,
+            !projectField.isEditing,
+            !firstNameField.isEditing,
+            !lastNameField.isEditing,
+            !companyField.isEditing
+            else { return }
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
     
+    @objc func keyboardWillHide(_ notification: Notification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0 {
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
+    }
+}
+
+extension PassGeneratorViewController: UITextFieldDelegate {
     
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
 }

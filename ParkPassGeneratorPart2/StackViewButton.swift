@@ -17,6 +17,7 @@ class StackViewButton: UIButton {
         self.heightAnchor.constraint(equalToConstant: view.frame.height).isActive = true
         self.setTitle(title, for: .normal)
         self.setTitleColor(#colorLiteral(red: 0.5156185627, green: 0.4799804091, blue: 0.5574848652, alpha: 1), for: .normal)
+        self.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .selected)
         self.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .highlighted)
         self.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 20.0)
     }
