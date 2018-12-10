@@ -40,7 +40,7 @@ class Test {
     // MARK: Helper Functions to mock data
     func createFoodEmployeePass() {
         do {
-            let pass = try EmployeePass(entrant: employeeEntrant, employeeType: .food)
+            let pass = try EmployeePass(entrant: employeeEntrant, employeeTypeString: EmployeeType.food.rawValue)
             testPass(pass: pass)
         } catch GeneratorError.missingInformation(let description) {
             print(description)
@@ -129,7 +129,7 @@ class Test {
     
     func createRideOperatorEmployeePass() {
         do {
-            let pass = try EmployeePass(entrant: employeeEntrant, employeeType: .ride)
+            let pass = try EmployeePass(entrant: employeeEntrant, employeeTypeString: EmployeeType.ride.rawValue)
             testPass(pass: pass)
         } catch GeneratorError.missingInformation(let description) {
             print(description)
@@ -140,7 +140,7 @@ class Test {
     
     func createMaintenanceEmployeePass() {
         do {
-            let pass = try EmployeePass(entrant: employeeEntrant, employeeType: .maintenance)
+            let pass = try EmployeePass(entrant: employeeEntrant, employeeTypeString: EmployeeType.maintenance.rawValue)
             testPass(pass: pass)
         } catch GeneratorError.missingInformation(let description) {
             print(description)
@@ -151,7 +151,7 @@ class Test {
     
     func createEmployeeMissingInformationPass() {
         do {
-            let pass = try EmployeePass(entrant: semiEmployeeEntrant, employeeType: .maintenance)
+            let pass = try EmployeePass(entrant: semiEmployeeEntrant, employeeTypeString: EmployeeType.maintenance.rawValue)
             testPass(pass: pass)
         } catch GeneratorError.missingInformation(let description) {
             print(description)
@@ -162,7 +162,7 @@ class Test {
     
     func createEmployeeManagerPass() {
         do {
-            let pass = try EmployeePass(entrant: employeeEntrant, employeeType: .manager, managementType: .shiftManager)
+            let pass = try EmployeePass(entrant: employeeEntrant, employeeTypeString: EmployeeType.manager.rawValue, managementType: .shiftManager)
             testPass(pass: pass)
         } catch GeneratorError.missingInformation(let description) {
             print(description)
@@ -173,7 +173,7 @@ class Test {
     
     func createManagerPassMissingManagerType() {
         do {
-            let pass = try EmployeePass(entrant: employeeEntrant, employeeType: .manager)
+            let pass = try EmployeePass(entrant: employeeEntrant, employeeTypeString: EmployeeType.manager.rawValue)
             testPass(pass: pass)
         } catch GeneratorError.missingInformation(let description) {
             print(description)

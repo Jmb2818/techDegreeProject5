@@ -13,10 +13,12 @@ class DateEditor {
     static var formatter = DateFormatter()
     
     // Function to format date of birth entered as string by user to actual date
-    static func createDateOfBirthDate(fromString string: String) -> Date? {
+    static func createDateOfBirthDate(fromString string: String?) -> Date? {
         formatter.dateFormat = "MM/dd/yyyy"
         
-        guard let dateOfBirth = formatter.date(from: string) else {
+        
+        
+        guard let dob = string, let dateOfBirth = formatter.date(from: dob) else {
             return nil
         }
         return dateOfBirth

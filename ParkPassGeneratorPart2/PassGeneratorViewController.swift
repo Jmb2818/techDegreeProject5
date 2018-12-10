@@ -89,6 +89,88 @@ class PassGeneratorViewController: UIViewController {
         }
     }
     
+    func generatePass() -> Pass? {
+        let passType = getSelectedPassType()
+        let entrant = createEntrant()
+        var pass: Pass?
+        
+        guard let passMainType = passType.mainType, let passSubType = passType.subType  else {
+            return nil
+        }
+        
+        
+        switch passMainType {
+        case .Employee:
+            do {
+                let _pass = try EmployeePass(entrant: entrant, employeeTypeString: passSubType)
+                pass = _pass
+            } catch(let error) {
+                print(error)
+            }
+        case .Guest:
+            return nil
+        case .Manager:
+            return nil
+        case .Vendor:
+            return nil
+        }
+        return pass
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "generatePass" {
+            let destinationViewController = segue.destination as? PassViewController
+            destinationViewController?.pass = generatePass()
+        }
+    }
+    
+    
+    func createEntrant() -> Entrant {
+        // TODO: Maybe throw an error if ssn or date cannot be created
+        let entrant = Entrant(firstName: firstNameField.text,
+                lastName: lastNameField.text,
+                streetAddress: addressField.text,
+                city: cityField.text,
+                state: stateField.text,
+                zipCode: zipCodeField.text,
+                ssn: formatNumberFromString(ssnField.text),
+                dob: DateEditor.createDateOfBirthDate(fromString: dateOfBirthField.text))
+        
+        return entrant
+    }
+    
+    
+    func formatNumberFromString(_ stringNum: String?) -> Int? {
+        if let numberString = stringNum {
+            let numNoOtherChar = numberString.components(separatedBy:
+                CharacterSet.decimalDigits.inverted).joined(separator: "")
+            return Int(numNoOtherChar)
+        }
+        return nil
+    }
+    
+    func getSelectedPassType() -> (mainType: EntrantType?,subType: String?) {
+        var passType: (mainType: EntrantType?,subType: String?)
+        for button in mainButtons {
+            if button.isSelected {
+                EntrantType.allCases.forEach { current in
+                    if let buttonTitle = button.currentTitle, current.rawValue == buttonTitle {
+                        passType.mainType = current
+                    }
+                }
+            }
+        }
+        
+        for subView in entrantSubTypeStackView.subviews {
+            if let button = subView as? UIButton {
+                if button.isSelected {
+                    passType.subType = button.currentTitle
+                }
+            }
+        }
+        
+        return passType
+    }
     
     func layoutStackView(entrantType: EntrantType) {
         

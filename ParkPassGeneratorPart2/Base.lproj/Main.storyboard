@@ -441,7 +441,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="Ctf-vt-NNW" kind="show" id="4J4-b1-T4K"/>
+                                            <segue destination="Ctf-vt-NNW" kind="show" identifier="generatePass" id="4J4-b1-T4K"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5k9-kR-RpB">
@@ -697,7 +697,7 @@
                                                     <color key="titleColor" red="0.34509803921568627" green="0.58431372549019611" blue="0.5607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath=" layer.cornerRadius">
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="8"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
@@ -819,7 +819,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="7kW-0O-WNB"/>
+                                    <action selector="dismissPassViewController:" destination="Ctf-vt-NNW" eventType="touchUpInside" id="WEg-2E-hBx"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm the pass has the expected level of access when swiped at a kiosk." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZEy-3E-PL6">
@@ -860,10 +860,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fTJ-4o-NLk"/>
                     </view>
+                    <connections>
+                        <outlet property="foodDiscountLabel" destination="AjS-SU-X4d" id="OKI-gF-OQR"/>
+                        <outlet property="merchDiscountLabel" destination="JHv-Ea-nyF" id="whE-6k-SJV"/>
+                        <outlet property="passFullNameLabel" destination="I9y-ia-EYl" id="Ne0-s1-eXq"/>
+                        <outlet property="passTypeLabel" destination="F2p-g4-Bnd" id="Wrs-PH-9z1"/>
+                        <outlet property="rideStatusLabel" destination="NrQ-CR-JeW" id="YME-cP-j4j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vL5-c4-zRC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="534.53237410071949" y="107.91366906474821"/>
+            <point key="canvasLocation" x="700.7194244604317" y="107.91366906474821"/>
         </scene>
     </scenes>
     <resources>

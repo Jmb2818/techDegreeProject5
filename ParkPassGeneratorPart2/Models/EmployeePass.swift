@@ -19,7 +19,18 @@ class EmployeePass: Pass {
     let managerType: ManagerType?
     
     // MARK: Initializers
-    init(entrant: Entrant, employeeType: EmployeeType, managementType: ManagerType? = nil) throws {
+    init(entrant: Entrant, employeeTypeString: String, managementType: ManagerType? = nil) throws {
+        var _employeeType: EmployeeType?
+        EmployeeType.allCases.forEach { current in
+            if current.rawValue == employeeTypeString {
+                _employeeType = current
+            }
+        }
+        
+        guard let employeeType = _employeeType else {
+            throw GeneratorError.incorrectSubtype("Employee Type Incorrect")
+        }
+        
         var emptyFields: [String] = []
         
         // Check to make sure all required employee information has been entered
@@ -73,7 +84,7 @@ class EmployeePass: Pass {
         if employeeType == .manager, let managerType = managementType {
             self.passType = (employeeType.rawValue + "-" + managerType.rawValue)
         } else {
-            self.passType = employeeType.rawValue
+            self.passType = employeeType.rawValue + " Employee"
         }
         self.managerType = managementType
     }
