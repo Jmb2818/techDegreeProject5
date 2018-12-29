@@ -15,10 +15,22 @@ class GuestPass: Pass {
     var isBirthday: Bool
     let passType: String
     let guestType: GuestType
+    let fullName: String?
     var passSwipeStamp: Date? = nil
     
     // MARK: Initializers
-    init(entrant: Entrant, guestType: GuestType) throws {
+    init(entrant: Entrant, guestTypeString: String) throws {
+        
+        var _guestType: GuestType?
+        GuestType.allCases.forEach { current in
+            if current.rawValue == guestTypeString {
+                _guestType = current
+            }
+        }
+        
+        guard let guestType = _guestType else {
+            throw GeneratorError.incorrectSubtype("Guest Type Incorrect")
+        }
         // If the guest type is a child, make sure there is a DOB and they are under 5
         if guestType == .child {
             guard let dateOfBirth = entrant.dob else {
@@ -42,56 +54,48 @@ class GuestPass: Pass {
         self.entrant = entrant
         self.guestType = guestType
         self.passType = guestType.rawValue
+        self.fullName = "\(entrant.firstName ?? "") \(entrant.lastName ?? "")"
     }
     
     // MARK: Required Methods
     func swipe(for areaAcess: AreaAccess) -> SwipeResult {
         switch areaAcess {
         case .amusement:
-            return SwipeResult(access: true, message: birthdayMessage)
+            return SwipeResult(access: true, birthdayMessage: birthdayMessage)
         default:
-            return SwipeResult(access: false, message: birthdayMessage)
+            return SwipeResult(access: false, birthdayMessage: birthdayMessage)
         }
     }
     
     func swipe(rideAccess: RideAccess) -> SwipeResult {
-        switch rideAccess {
-        case .all:
-            
-            // Check if pass has a pass stamp and if it is swiped less than 5 seconds ago
-            // If not then give new pass stamp
-            if let lastSwipeDate = passSwipeStamp {
-                if isPassSwipedTooSoon(timeOfLastSwipe: lastSwipeDate) {
-                    return SwipeResult(access: false, message: " Sorry you have tried to access this ride in the last 5 seconds.")
-                } else {
-                    passSwipeStamp = Date()
-                }
+        
+        // Check if pass has a pass stamp and if it is swiped less than 5 seconds ago
+        // If not then give new pass stamp
+        if let lastSwipeDate = passSwipeStamp {
+            if isPassSwipedTooSoon(timeOfLastSwipe: lastSwipeDate) {
+                return SwipeResult(access: false, message: " Sorry you have tried to access this ride in the last 5 seconds.", birthdayMessage: birthdayMessage)
             } else {
                 passSwipeStamp = Date()
             }
-            return SwipeResult(access: true, message: birthdayMessage)
-        case .skipLines:
-            if self.guestType == .vip {
-                return SwipeResult(access: true, message: birthdayMessage)
-            } else {
-                return SwipeResult(access: false, message: birthdayMessage)
-            }
+        } else {
+            passSwipeStamp = Date()
         }
+        return SwipeResult(access: true, message: createSkipLineMessage(), birthdayMessage: birthdayMessage)
     }
     
-    func swipe(discountOn: DiscountAccess) -> Int {
+    func swipe(discountOn: DiscountAccess) -> SwipeResult {
         switch discountOn {
         case .food:
             if self.guestType == .vip {
-                return 10
+                return SwipeResult(access: true, message: "Discount of 10%", birthdayMessage: birthdayMessage)
             } else {
-                return 0
+                return SwipeResult(access: false, message: "We are sorry, no discounts allowed.", birthdayMessage: birthdayMessage)
             }
         case .merchandise:
             if self.guestType == .vip {
-                return 20
+                return SwipeResult(access: true, message: "Discount of 20%", birthdayMessage: birthdayMessage)
             } else {
-                return 0
+                return SwipeResult(access: false, message: "We are sorry, no discounts allowed.", birthdayMessage: birthdayMessage)
             }
         }
     }

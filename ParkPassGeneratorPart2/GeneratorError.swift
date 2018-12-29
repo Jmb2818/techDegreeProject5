@@ -13,4 +13,5 @@ enum GeneratorError: Error {
     case incorrectSubtype(String)
     case missingInformation(String)
     case olderThanFive(String)
+    case missingProjectNumber(String)
 }

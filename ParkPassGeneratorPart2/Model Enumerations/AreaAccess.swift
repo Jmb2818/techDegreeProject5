@@ -9,10 +9,12 @@
 import Foundation
 
 // Enumeration for each type of area access
-enum AreaAccess {
+enum AreaAccess: String {
     case amusement
     case rideControl
     case kitchen
     case maintenance
     case office
 }
+
+extension AreaAccess: CaseIterable {}

@@ -9,7 +9,9 @@
 import Foundation
 
 // Enumeration for each type of ride access
-enum RideAccess {
+enum RideAccess: String {
     case all
     case skipLines
 }
+
+extension RideAccess: CaseIterable {}

@@ -9,7 +9,9 @@
 import Foundation
 
 // Enumeration for discount access types
-enum DiscountAccess {
+enum DiscountAccess: String {
     case food
     case merchandise
 }
+
+extension DiscountAccess: CaseIterable {}

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0B66110F21BA31AA00D171E2 /* PassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B66110E21BA31AA00D171E2 /* PassViewController.swift */; };
+		0B77EEEE21CED90000C89534 /* ManagerPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B77EEED21CED90000C89534 /* ManagerPass.swift */; };
+		0B77EEF021CEE42C00C89534 /* VendorPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B77EEEF21CEE42C00C89534 /* VendorPass.swift */; };
+		0B77EEF221CF4EEC00C89534 /* ProjectNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B77EEF121CF4EEC00C89534 /* ProjectNumbers.swift */; };
 		0BBCF45D21A3A873006E8477 /* VendorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCF45C21A3A873006E8477 /* VendorType.swift */; };
 		0BF55BF621953F390086AAF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF55BF521953F390086AAF0 /* AppDelegate.swift */; };
 		0BF55BFB21953F390086AAF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BF55BF921953F390086AAF0 /* Main.storyboard */; };
@@ -34,6 +37,9 @@
 
 /* Begin PBXFileReference section */
 		0B66110E21BA31AA00D171E2 /* PassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassViewController.swift; sourceTree = "<group>"; };
+		0B77EEED21CED90000C89534 /* ManagerPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerPass.swift; sourceTree = "<group>"; };
+		0B77EEEF21CEE42C00C89534 /* VendorPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorPass.swift; sourceTree = "<group>"; };
+		0B77EEF121CF4EEC00C89534 /* ProjectNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectNumbers.swift; sourceTree = "<group>"; };
 		0BBCF45C21A3A873006E8477 /* VendorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorType.swift; sourceTree = "<group>"; };
 		0BF55BF221953F390086AAF0 /* ParkPassGeneratorPart2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkPassGeneratorPart2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF55BF521953F390086AAF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +125,7 @@
 				0BF55C192195417B0086AAF0 /* RideAccess.swift */,
 				0BF55C27219E735C0086AAF0 /* EntrantType.swift */,
 				0BBCF45C21A3A873006E8477 /* VendorType.swift */,
+				0B77EEF121CF4EEC00C89534 /* ProjectNumbers.swift */,
 			);
 			path = "Model Enumerations";
 			sourceTree = "<group>";
@@ -130,6 +137,8 @@
 				0BF55C0921953FD00086AAF0 /* Entrant.swift */,
 				0BF55C0B21953FE30086AAF0 /* EmployeePass.swift */,
 				0BF55C0D219540120086AAF0 /* GuestPass.swift */,
+				0B77EEED21CED90000C89534 /* ManagerPass.swift */,
+				0B77EEEF21CEE42C00C89534 /* VendorPass.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -212,6 +221,8 @@
 				0BF55C14219540B00086AAF0 /* ManagerType.swift in Sources */,
 				0BF55C22219541C40086AAF0 /* Test.swift in Sources */,
 				0BF55C20219541B80086AAF0 /* GeneratorError.swift in Sources */,
+				0B77EEF021CEE42C00C89534 /* VendorPass.swift in Sources */,
+				0B77EEEE21CED90000C89534 /* ManagerPass.swift in Sources */,
 				0BF55C0821953FB70086AAF0 /* Pass.swift in Sources */,
 				0BF55C12219540340086AAF0 /* GuestType.swift in Sources */,
 				0BF55C2A219E74FE0086AAF0 /* StackViewButton.swift in Sources */,
@@ -222,6 +233,7 @@
 				0BF55C0E219540120086AAF0 /* GuestPass.swift in Sources */,
 				0BF55C0C21953FE30086AAF0 /* EmployeePass.swift in Sources */,
 				0BF55C182195413F0086AAF0 /* DiscountAccess.swift in Sources */,
+				0B77EEF221CF4EEC00C89534 /* ProjectNumbers.swift in Sources */,
 				0BF55C28219E735C0086AAF0 /* EntrantType.swift in Sources */,
 				0BF55BF621953F390086AAF0 /* AppDelegate.swift in Sources */,
 				0BBCF45D21A3A873006E8477 /* VendorType.swift in Sources */,

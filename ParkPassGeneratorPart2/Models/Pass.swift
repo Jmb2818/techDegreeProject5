@@ -14,9 +14,10 @@ protocol Pass {
     var isBirthday: Bool { get }
     var passSwipeStamp: Date? { get set }
     var passType: String { get }
+    var fullName: String? { get }
     func swipe(for areaAcess: AreaAccess) -> SwipeResult
     func swipe(rideAccess: RideAccess) -> SwipeResult
-    func swipe(discountOn: DiscountAccess) -> Int
+    func swipe(discountOn: DiscountAccess) -> SwipeResult
 }
 extension Pass {
     // Computed Properties
@@ -27,6 +28,16 @@ extension Pass {
             return ""
         }
     }
+    
+    func createSkipLineMessage() -> String {
+        let swipeResult = self.swipe(rideAccess: .skipLines)
+        if swipeResult.access {
+            return "Allowed to skip lines"
+        } else {
+            return "Skipping of lines is not allowed."
+        }
+    }
+    
     // Default implementation for a function to check the passDate and make sure it is not too soon
     func isPassSwipedTooSoon(timeOfLastSwipe: Date) -> Bool {
         

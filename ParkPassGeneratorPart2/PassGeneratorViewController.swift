@@ -58,6 +58,10 @@ class PassGeneratorViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        resetPassGenerator()
+    }
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -89,6 +93,23 @@ class PassGeneratorViewController: UIViewController {
         }
     }
     
+    func resetPassGenerator() {
+        for field in mainTextFields {
+            field.text?.removeAll()
+            dimFieldsExcept(enabledTextFields: [])
+        }
+        dimLabelsExcept(enabledLabels: [])
+        for button in mainButtons {
+            button.isSelected = false
+        }
+        for view in entrantSubTypeStackView.subviews {
+            view.removeFromSuperview()
+        }
+        let emptyView = UIView(frame: CGRect(x: 0, y: 0, width: entrantSubTypeStackView.frame.width, height: entrantSubTypeStackView.frame.height))
+        emptyView.backgroundColor = #colorLiteral(red: 0.2470588235, green: 0.2117647059, blue: 0.2823529412, alpha: 1)
+        entrantSubTypeStackView.addSubview(emptyView)
+    }
+    
     func generatePass() -> Pass? {
         let passType = getSelectedPassType()
         let entrant = createEntrant()
@@ -108,9 +129,19 @@ class PassGeneratorViewController: UIViewController {
                 print(error)
             }
         case .Guest:
-            return nil
+            do {
+                let _pass = try GuestPass(entrant: entrant, guestTypeString: passSubType)
+                pass = _pass
+            } catch(let error) {
+                print(error)
+            }
         case .Manager:
-            return nil
+            do {
+                let _pass = try ManagerPass(entrant: entrant, managerTypeString: passSubType)
+                pass = _pass
+            } catch(let error) {
+                print(error)
+            }
         case .Vendor:
             return nil
         }
@@ -287,6 +318,10 @@ class PassGeneratorViewController: UIViewController {
         for label in enabledLabels {
             label.isEnabled = true
         }
+    }
+    
+    func fillFields() {
+        
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {

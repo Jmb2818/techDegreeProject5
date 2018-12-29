@@ -9,10 +9,10 @@
 import Foundation
 
 enum VendorType: String {
-    case Acme = "Acme"
-    case Orkin = "Orkin"
-    case Fedex = "Fedex"
-    case NWElectrical = "NW Electrical"
+    case acme = "Acme"
+    case orkin = "Orkin"
+    case fedex = "Fedex"
+    case nwElectrical = "NW Electrical"
 }
 
 extension VendorType: CaseIterable {}
