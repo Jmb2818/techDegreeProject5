@@ -89,13 +89,13 @@ class GuestPass: Pass {
             if self.guestType == .vip {
                 return SwipeResult(access: true, message: "Discount of 10%", birthdayMessage: birthdayMessage)
             } else {
-                return SwipeResult(access: false, message: "We are sorry, no discounts allowed.", birthdayMessage: birthdayMessage)
+                return SwipeResult(access: false, message: "Discount Not Available", birthdayMessage: birthdayMessage)
             }
         case .merchandise:
             if self.guestType == .vip {
                 return SwipeResult(access: true, message: "Discount of 20%", birthdayMessage: birthdayMessage)
             } else {
-                return SwipeResult(access: false, message: "We are sorry, no discounts allowed.", birthdayMessage: birthdayMessage)
+                return SwipeResult(access: false, message: "Discount Not Available", birthdayMessage: birthdayMessage)
             }
         }
     }

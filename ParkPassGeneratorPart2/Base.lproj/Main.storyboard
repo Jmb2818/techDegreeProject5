@@ -459,6 +459,10 @@
                                                 <integer key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="populateData:" destination="8Sx-2j-rQC" eventType="touchUpInside" id="FNN-1o-esl"/>
+                                            <action selector="populateData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h5J-tr-aBE"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -534,6 +538,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="8Sx-2j-rQC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-122.65625" y="108.984375"/>
         </scene>
@@ -835,7 +840,7 @@
                                     <action selector="dismissPassViewController:" destination="Ctf-vt-NNW" eventType="touchUpInside" id="WEg-2E-hBx"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm the pass has the expected level of access when swiped at a kiosk." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZEy-3E-PL6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Confirm the pass has the expected level of access when swiped at a kiosk." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZEy-3E-PL6">
                                 <rect key="frame" x="132.5" y="582.5" width="569.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.50588235294117645" green="0.49803921568627452" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -866,6 +871,7 @@
                             <constraint firstItem="41E-Ih-tLM" firstAttribute="top" secondItem="AMI-2q-FrN" secondAttribute="bottom" constant="20" id="BC5-IF-Fuw"/>
                             <constraint firstItem="fTJ-4o-NLk" firstAttribute="trailing" secondItem="U07-dA-NyP" secondAttribute="trailing" id="BcZ-7A-FnG"/>
                             <constraint firstItem="lfT-vW-C6b" firstAttribute="leading" secondItem="P3h-vb-MtO" secondAttribute="leading" id="Bnh-7v-Any"/>
+                            <constraint firstItem="Dgv-40-9yM" firstAttribute="top" relation="greaterThanOrEqual" secondItem="41E-Ih-tLM" secondAttribute="bottom" constant="10" id="CEl-gk-ooG"/>
                             <constraint firstItem="XiL-mM-oIR" firstAttribute="leading" secondItem="fTJ-4o-NLk" secondAttribute="leading" id="EMV-Yj-9EC"/>
                             <constraint firstItem="P3h-vb-MtO" firstAttribute="leading" secondItem="fTJ-4o-NLk" secondAttribute="leading" constant="40" id="OIx-9v-AUG"/>
                             <constraint firstItem="U07-dA-NyP" firstAttribute="top" secondItem="fTJ-4o-NLk" secondAttribute="top" id="Oxf-to-o05"/>

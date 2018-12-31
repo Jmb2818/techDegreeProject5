@@ -108,7 +108,7 @@ class EmployeePass: Pass {
     
     func swipe(discountOn: DiscountAccess) -> SwipeResult {
         if employeeType == .contract {
-            return SwipeResult(access: false, message: "We are sorry, no discounts allowed.", birthdayMessage: birthdayMessage)
+            return SwipeResult(access: false, message: "Discount Not Available", birthdayMessage: birthdayMessage)
         }
         switch discountOn {
         case .food:

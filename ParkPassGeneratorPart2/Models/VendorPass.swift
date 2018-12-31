@@ -73,7 +73,7 @@ class VendorPass: Pass {
     }
     
     func swipe(discountOn: DiscountAccess) -> SwipeResult {
-        return SwipeResult(access: false, message: "We are sorry, no discounts allowed.", birthdayMessage: birthdayMessage)
+        return SwipeResult(access: false, message: "Discount Not Available", birthdayMessage: birthdayMessage)
     }
     
 }

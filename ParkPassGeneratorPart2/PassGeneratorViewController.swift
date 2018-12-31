@@ -93,6 +93,11 @@ class PassGeneratorViewController: UIViewController {
         }
     }
     
+    @IBAction func populateData(_ sender: UIButton) {
+        fillFields()
+    }
+    
+    
     func resetPassGenerator() {
         for field in mainTextFields {
             field.text?.removeAll()
@@ -116,6 +121,7 @@ class PassGeneratorViewController: UIViewController {
         var pass: Pass?
         
         guard let passMainType = passType.mainType, let passSubType = passType.subType  else {
+            createAlert()
             return nil
         }
         
@@ -127,23 +133,29 @@ class PassGeneratorViewController: UIViewController {
                 pass = _pass
             } catch(let error) {
                 print(error)
+                createAlert()
             }
         case .Guest:
             do {
                 let _pass = try GuestPass(entrant: entrant, guestTypeString: passSubType)
                 pass = _pass
             } catch(let error) {
-                print(error)
+                createAlert()
             }
         case .Manager:
             do {
                 let _pass = try ManagerPass(entrant: entrant, managerTypeString: passSubType)
                 pass = _pass
             } catch(let error) {
-                print(error)
+                createAlert()
             }
         case .Vendor:
-            return nil
+            do {
+                let _pass = try VendorPass(entrant: entrant, vendorTypeString: passSubType)
+                pass = _pass
+            } catch(let error) {
+                createAlert()
+            }
         }
         return pass
     }
@@ -153,6 +165,14 @@ class PassGeneratorViewController: UIViewController {
             let destinationViewController = segue.destination as? PassViewController
             destinationViewController?.pass = generatePass()
         }
+    }
+    
+    func createAlert() {
+        let alert = UIAlertController(title: "Hello", message: "Error", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
+            self?.resetPassGenerator()
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     
@@ -321,7 +341,34 @@ class PassGeneratorViewController: UIViewController {
     }
     
     func fillFields() {
-        
+        for textField in mainTextFields {
+            if textField.isEnabled {
+                switch textField.restorationIdentifier {
+                case "firstName":
+                    textField.text = "Harry"
+                case "lastName":
+                    textField.text = "Potter"
+                case "company":
+                    textField.text = "Acme"
+                case "dob":
+                    textField.text = "10/31/1981"
+                case "ssn#":
+                    textField.text = "345-43-1234"
+                case "project#":
+                    textField.text = "1001"
+                case "streetAddress":
+                    textField.text = "300 Hogwarts Way"
+                case "city":
+                    textField.text = "Hogsmeade"
+                case "state":
+                    textField.text = "Scotland"
+                case "zipCode":
+                    textField.text = "40453"
+                default:
+                    break
+                }
+            }
+        }
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
