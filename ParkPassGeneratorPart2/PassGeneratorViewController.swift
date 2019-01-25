@@ -17,7 +17,6 @@ class PassGeneratorViewController: UIViewController {
     @IBOutlet weak var employeeButton: UIButton!
     @IBOutlet weak var managerButton: UIButton!
     @IBOutlet weak var vendorButton: UIButton!
-    
     @IBOutlet weak var dateOfBirthField: UITextField!
     @IBOutlet weak var ssnField: UITextField!
     @IBOutlet weak var projectField: UITextField!
@@ -38,6 +37,7 @@ class PassGeneratorViewController: UIViewController {
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var zipCodeLabel: UILabel!
+    @IBOutlet weak var stackViewFiller: UIView!
     
     
     
@@ -121,41 +121,25 @@ class PassGeneratorViewController: UIViewController {
         var pass: Pass?
         
         guard let passMainType = passType.mainType, let passSubType = passType.subType  else {
-            createAlert()
+            createAlert(message: "A pass could not be created from the type or subtype selected.")
             return nil
         }
         
-        
-        switch passMainType {
-        case .Employee:
-            do {
-                let _pass = try EmployeePass(entrant: entrant, employeeTypeString: passSubType)
-                pass = _pass
-            } catch(let error) {
-                print(error)
-                createAlert()
+        do {
+            switch passMainType {
+            case .Employee:
+                pass = try EmployeePass(entrant: entrant, employeeTypeString: passSubType)
+            case .Guest:
+                pass = try GuestPass(entrant: entrant, guestTypeString: passSubType)
+            case .Manager:
+                pass = try ManagerPass(entrant: entrant, managerTypeString: passSubType)
+            case .Vendor:
+                pass = try VendorPass(entrant: entrant, vendorTypeString: passSubType)
             }
-        case .Guest:
-            do {
-                let _pass = try GuestPass(entrant: entrant, guestTypeString: passSubType)
-                pass = _pass
-            } catch(let error) {
-                createAlert()
-            }
-        case .Manager:
-            do {
-                let _pass = try ManagerPass(entrant: entrant, managerTypeString: passSubType)
-                pass = _pass
-            } catch(let error) {
-                createAlert()
-            }
-        case .Vendor:
-            do {
-                let _pass = try VendorPass(entrant: entrant, vendorTypeString: passSubType)
-                pass = _pass
-            } catch(let error) {
-                createAlert()
-            }
+            
+        } catch(let error) {
+            let generatorError = error as? GeneratorError ?? GeneratorError.generic
+            createAlert(message: generatorError.getErrorMessage())
         }
         return pass
     }
@@ -167,9 +151,10 @@ class PassGeneratorViewController: UIViewController {
         }
     }
     
-    func createAlert() {
-        let alert = UIAlertController(title: "Hello", message: "Error", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
+    func createAlert(title: String = "Error Generating Pass", message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Reset", style: .default, handler: { [weak self] _ in
             self?.resetPassGenerator()
         }))
         self.present(alert, animated: true, completion: nil)
@@ -179,13 +164,13 @@ class PassGeneratorViewController: UIViewController {
     func createEntrant() -> Entrant {
         // TODO: Maybe throw an error if ssn or date cannot be created
         let entrant = Entrant(firstName: firstNameField.text,
-                lastName: lastNameField.text,
-                streetAddress: addressField.text,
-                city: cityField.text,
-                state: stateField.text,
-                zipCode: zipCodeField.text,
-                ssn: formatNumberFromString(ssnField.text),
-                dob: DateEditor.createDateOfBirthDate(fromString: dateOfBirthField.text))
+                              lastName: lastNameField.text,
+                              streetAddress: addressField.text,
+                              city: cityField.text,
+                              state: stateField.text,
+                              zipCode: zipCodeField.text,
+                              ssn: formatNumberFromString(ssnField.text),
+                              dob: DateEditor.createDateOfBirthDate(fromString: dateOfBirthField.text))
         
         return entrant
     }
@@ -219,7 +204,6 @@ class PassGeneratorViewController: UIViewController {
                 }
             }
         }
-        
         return passType
     }
     
