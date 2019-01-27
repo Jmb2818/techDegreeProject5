@@ -116,7 +116,7 @@ struct Entrant {
     
     func isEntrantBirthday() -> Bool {
         if let dateOfBirth = self.dob {
-            return DateEditor.isBirthday(dateOfBirth: dateOfBirth)
+            return Formatter.isBirthday(dateOfBirth: dateOfBirth)
        }
         
         return false

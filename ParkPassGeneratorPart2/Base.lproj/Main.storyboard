@@ -217,7 +217,7 @@
                                                 <color key="textColor" red="0.37254901960784315" green="0.36470588235294116" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="firstName" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ESU-Eq-hLG">
+                                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="firstName" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ESU-Eq-hLG">
                                                 <rect key="frame" x="0.0" y="40.5" width="468" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="HFX-1v-Drd"/>
@@ -243,7 +243,7 @@
                                                 <color key="textColor" red="0.37254901960784315" green="0.36470588235294116" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="lastName" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6eo-MG-l3d">
+                                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="lastName" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6eo-MG-l3d">
                                                 <rect key="frame" x="0.0" y="40.5" width="468" height="60"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -280,7 +280,7 @@
                                         <color key="textColor" red="0.37254901960784315" green="0.36470588235294116" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="company" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wNE-lR-a0L">
+                                    <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="company" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wNE-lR-a0L">
                                         <rect key="frame" x="0.0" y="40.5" width="964" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="ihl-LZ-wiX"/>
@@ -347,7 +347,7 @@
                                                 <color key="textColor" red="0.37254901960784315" green="0.36470588235294116" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="city" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xkk-K8-baa">
+                                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="city" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xkk-K8-baa">
                                                 <rect key="frame" x="0.0" y="40.5" width="301.5" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="2ly-ne-TY1"/>
@@ -373,7 +373,7 @@
                                                 <color key="textColor" red="0.37254901960784315" green="0.36470588235294116" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="state" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CMs-kW-tK7">
+                                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="state" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CMs-kW-tK7">
                                                 <rect key="frame" x="0.0" y="40.5" width="301" height="60"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -395,7 +395,7 @@
                                                 <color key="textColor" red="0.37254901960784315" green="0.36470588235294116" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="zipCode" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SuY-6F-1le">
+                                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="zipCode" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SuY-6F-1le">
                                                 <rect key="frame" x="0.0" y="40.5" width="301.5" height="60"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -547,7 +547,7 @@
             <objects>
                 <viewController id="Ctf-vt-NNW" customClass="PassViewController" customModule="ParkPassGeneratorPart2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PAf-gW-Noz">
-                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lfT-vW-C6b">

@@ -46,7 +46,7 @@ class GuestPass: Pass {
         
         // If the entrant has entered a DOB then check if it is their birthday for special messaging
         if let dateOfBirth = entrant.dob {
-            self.isBirthday = DateEditor.isBirthday(dateOfBirth: dateOfBirth)
+            self.isBirthday = Formatter.isBirthday(dateOfBirth: dateOfBirth)
         } else {
             self.isBirthday = false
         }

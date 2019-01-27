@@ -37,10 +37,8 @@ class PassGeneratorViewController: UIViewController {
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var zipCodeLabel: UILabel!
-    @IBOutlet weak var stackViewFiller: UIView!
     
-    
-    
+    // MARK: Properties
     lazy var  mainButtons: [UIButton] = [guestButton, employeeButton, managerButton, vendorButton]
     lazy var mainTextFields: [UITextField] = [dateOfBirthField, ssnField, projectField, firstNameField, lastNameField, companyField, addressField, cityField, stateField, zipCodeField]
     lazy var mainLabels: [UILabel] = [dobLabel, ssnLabel, projectNumLabel, firstNameLabel, lastNameLabel, companyLabel, addressLabel, cityLabel, stateLabel, zipCodeLabel]
@@ -63,9 +61,11 @@ class PassGeneratorViewController: UIViewController {
     }
     
     deinit {
+        // Remove observers on deinit
         NotificationCenter.default.removeObserver(self)
     }
     
+    // MARK: IBActions
     
     @IBAction func entrantTypeSelection(_ sender: UIButton) {
         
@@ -97,8 +97,21 @@ class PassGeneratorViewController: UIViewController {
         fillFields()
     }
     
+    // MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "generatePass" {
+            let destinationViewController = segue.destination as? PassViewController
+            if let pass = generatePass() {
+              destinationViewController?.passModel = GeneratedPassModel(from: pass)
+            }
+        }
+    }
+    
+    // MARK: Helper Functions
     
     func resetPassGenerator() {
+        
+        // Reset all fields and labels back to their original state
         for field in mainTextFields {
             field.text?.removeAll()
             dimFieldsExcept(enabledTextFields: [])
@@ -115,13 +128,21 @@ class PassGeneratorViewController: UIViewController {
         entrantSubTypeStackView.addSubview(emptyView)
     }
     
+    func createAlert(title: String = UserStrings.Error.generalTitle, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: UserStrings.Error.okTitle, style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: Pass Generation Functions
+    
     func generatePass() -> Pass? {
         let passType = getSelectedPassType()
         let entrant = createEntrant()
         var pass: Pass?
         
         guard let passMainType = passType.mainType, let passSubType = passType.subType  else {
-            createAlert(message: "A pass could not be created from the type or subtype selected.")
+            createAlert(message: UserStrings.Error.errorWithType)
             return nil
         }
         
@@ -144,45 +165,19 @@ class PassGeneratorViewController: UIViewController {
         return pass
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "generatePass" {
-            let destinationViewController = segue.destination as? PassViewController
-            destinationViewController?.pass = generatePass()
-        }
-    }
-    
-    func createAlert(title: String = "Error Generating Pass", message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Reset", style: .default, handler: { [weak self] _ in
-            self?.resetPassGenerator()
-        }))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     
     func createEntrant() -> Entrant {
-        // TODO: Maybe throw an error if ssn or date cannot be created
         let entrant = Entrant(firstName: firstNameField.text,
                               lastName: lastNameField.text,
                               streetAddress: addressField.text,
                               city: cityField.text,
                               state: stateField.text,
                               zipCode: zipCodeField.text,
-                              ssn: formatNumberFromString(ssnField.text),
-                              dob: DateEditor.createDateOfBirthDate(fromString: dateOfBirthField.text))
+                              ssn: Formatter.formatNumberFromString(ssnField.text),
+                              dob: Formatter.createDateOfBirthDate(fromString: dateOfBirthField.text),
+                              projectNum: projectField.text)
         
         return entrant
-    }
-    
-    
-    func formatNumberFromString(_ stringNum: String?) -> Int? {
-        if let numberString = stringNum {
-            let numNoOtherChar = numberString.components(separatedBy:
-                CharacterSet.decimalDigits.inverted).joined(separator: "")
-            return Int(numNoOtherChar)
-        }
-        return nil
     }
     
     func getSelectedPassType() -> (mainType: EntrantType?,subType: String?) {
@@ -207,6 +202,8 @@ class PassGeneratorViewController: UIViewController {
         return passType
     }
     
+    // MARK: Text field and stack view configuration functionsg
+    
     func layoutStackView(entrantType: EntrantType) {
         
         DispatchQueue.main.async { [weak self] in
@@ -219,6 +216,8 @@ class PassGeneratorViewController: UIViewController {
                 }
             }
             
+            // Layout entrant subtype based on main type selected and give it the function
+            // to layout the view's text fields
             switch entrantType {
             case .Manager:
                 ManagerType.allCases.forEach {
@@ -249,13 +248,13 @@ class PassGeneratorViewController: UIViewController {
     }
     
     @objc func layoutSubtype(sender: Any) {
-        
+        // Unselect all of the buttons in the subType stack view
         for subView in entrantSubTypeStackView.subviews {
             if let button = subView as? UIButton {
                 button.isSelected = false
             }
         }
-        
+        // Get the selected button and highlight it as being selected
         guard let selectedSubButton = sender as? UIButton else { return }
         
         selectedSubButton.isSelected = true
@@ -266,36 +265,36 @@ class PassGeneratorViewController: UIViewController {
                 selectedButtonLabel = button.titleLabel?.text
             }
         }
-        
+        // Depending on how which button is selected, configure the view's text fields
         guard let selectedButton = selectedButtonLabel else { return }
         
         switch selectedButton {
-        case "Guest":
-            if selectedSubButton.titleLabel?.text == "Child" {
+        case EntrantType.Guest.rawValue:
+            if selectedSubButton.titleLabel?.text == GuestType.child.rawValue {
                 dimFieldsExcept(enabledTextFields: [dateOfBirthField])
                 dimLabelsExcept(enabledLabels: [dobLabel])
-            } else if selectedSubButton.titleLabel?.text == "Season Pass" {
+            } else if selectedSubButton.titleLabel?.text == GuestType.seasonPass.rawValue {
                 dimFieldsExcept(enabledTextFields: [firstNameField,lastNameField, addressField, cityField, stateField, zipCodeField, dateOfBirthField])
                 dimLabelsExcept(enabledLabels: [firstNameLabel, lastNameLabel, addressLabel, cityLabel, stateLabel, zipCodeLabel, dobLabel])
-            } else if selectedSubButton.titleLabel?.text == "Senior" {
+            } else if selectedSubButton.titleLabel?.text == GuestType.senior.rawValue {
                 dimFieldsExcept(enabledTextFields: [dateOfBirthField, firstNameField, lastNameField])
                 dimLabelsExcept(enabledLabels: [dobLabel, firstNameLabel, lastNameLabel])
             } else {
                 dimFieldsExcept(enabledTextFields: [])
                 dimLabelsExcept(enabledLabels: [])
             }
-        case "Employee":
-            if selectedSubButton.titleLabel?.text == "Contract" {
+        case EntrantType.Employee.rawValue:
+            if selectedSubButton.titleLabel?.text == EmployeeType.contract.rawValue {
                 dimFieldsExcept(enabledTextFields: [dateOfBirthField, ssnField, firstNameField, lastNameField, addressField, cityField, stateField, zipCodeField, projectField])
                 dimLabelsExcept(enabledLabels: [dobLabel, ssnLabel, firstNameLabel, lastNameLabel, addressLabel, cityLabel, stateLabel, zipCodeLabel, projectNumLabel])
             } else {
                 dimFieldsExcept(enabledTextFields: [dateOfBirthField, ssnField, firstNameField, lastNameField, addressField, cityField, stateField, zipCodeField])
                 dimLabelsExcept(enabledLabels: [dobLabel, ssnLabel, firstNameLabel, lastNameLabel, addressLabel, cityLabel, stateLabel, zipCodeLabel])
             }
-        case "Manager":
+        case EntrantType.Manager.rawValue:
             dimFieldsExcept(enabledTextFields: [dateOfBirthField, ssnField, firstNameField, lastNameField, addressField, cityField, stateField, zipCodeField])
             dimLabelsExcept(enabledLabels: [dobLabel, ssnLabel, firstNameLabel, lastNameLabel, addressLabel, cityLabel, stateLabel, zipCodeLabel])
-        case "Vendor":
+        case EntrantType.Vendor.rawValue:
             dimFieldsExcept(enabledTextFields: [firstNameField, lastNameField, companyField, dateOfBirthField])
             dimLabelsExcept(enabledLabels: [firstNameLabel, lastNameLabel, companyLabel, dobLabel])
         default:
@@ -329,25 +328,25 @@ class PassGeneratorViewController: UIViewController {
             if textField.isEnabled {
                 switch textField.restorationIdentifier {
                 case "firstName":
-                    textField.text = "Harry"
+                    textField.text = UserStrings.MockData.firstName
                 case "lastName":
-                    textField.text = "Potter"
+                    textField.text = UserStrings.MockData.lastName
                 case "company":
-                    textField.text = "Acme"
+                    textField.text = UserStrings.MockData.company
                 case "dob":
-                    textField.text = "10/31/1981"
+                    textField.text = UserStrings.MockData.dob
                 case "ssn#":
-                    textField.text = "345-43-1234"
+                    textField.text = UserStrings.MockData.ssn
                 case "project#":
-                    textField.text = "1001"
+                    textField.text = UserStrings.MockData.projectNum
                 case "streetAddress":
-                    textField.text = "300 Hogwarts Way"
+                    textField.text = UserStrings.MockData.streetAddress
                 case "city":
-                    textField.text = "Hogsmeade"
+                    textField.text = UserStrings.MockData.city
                 case "state":
-                    textField.text = "Scotland"
+                    textField.text = UserStrings.MockData.state
                 case "zipCode":
-                    textField.text = "40453"
+                    textField.text = UserStrings.MockData.zipcode
                 default:
                     break
                 }
@@ -355,15 +354,13 @@ class PassGeneratorViewController: UIViewController {
         }
     }
     
+    // MARK: Keyboard hiding logic
+    
     @objc func keyboardWillShow(_ notification: Notification) {
-        // TODO: check screen size
-        guard !dateOfBirthField.isEditing,
-            !ssnField.isEditing,
-            !projectField.isEditing,
-            !firstNameField.isEditing,
-            !lastNameField.isEditing,
-            !companyField.isEditing
-            else { return }
+        let largeIpadScreenSize: CGFloat = 1024
+        
+        guard !shouldResizeForKeyboard() && view.bounds.width < largeIpadScreenSize else { return }
+        // Move the view up to not hide the bottom text fields with the keyboard
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
                 self.view.frame.origin.y -= keyboardSize.height
@@ -372,11 +369,13 @@ class PassGeneratorViewController: UIViewController {
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0 {
-                self.view.frame.origin.y += keyboardSize.height
-            }
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0.0
         }
+    }
+    
+    func shouldResizeForKeyboard() -> Bool {
+        return dateOfBirthField.isEditing || ssnField.isEditing || projectField.isEditing || firstNameField.isEditing || lastNameField.isEditing || companyField.isEditing
     }
 }
 

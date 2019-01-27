@@ -47,7 +47,7 @@ class EmployeePass: Pass {
         }
         
         if let dateOfBirth = entrant.dob {
-            self.isBirthday = DateEditor.isBirthday(dateOfBirth: dateOfBirth)
+            self.isBirthday = Formatter.isBirthday(dateOfBirth: dateOfBirth)
         } else {
             self.isBirthday = false
         }

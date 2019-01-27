@@ -12,6 +12,8 @@
 		0B77EEF021CEE42C00C89534 /* VendorPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B77EEEF21CEE42C00C89534 /* VendorPass.swift */; };
 		0B77EEF221CF4EEC00C89534 /* ProjectNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B77EEF121CF4EEC00C89534 /* ProjectNumbers.swift */; };
 		0BBCF45D21A3A873006E8477 /* VendorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCF45C21A3A873006E8477 /* VendorType.swift */; };
+		0BCB9F1721FCF9B60097182F /* GeneratedPassModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCB9F1621FCF9B60097182F /* GeneratedPassModel.swift */; };
+		0BCB9F1921FD04850097182F /* UserStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCB9F1821FD04850097182F /* UserStrings.swift */; };
 		0BF55BF621953F390086AAF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF55BF521953F390086AAF0 /* AppDelegate.swift */; };
 		0BF55BFB21953F390086AAF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BF55BF921953F390086AAF0 /* Main.storyboard */; };
 		0BF55BFD21953F3C0086AAF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BF55BFC21953F3C0086AAF0 /* Assets.xcassets */; };
@@ -27,7 +29,7 @@
 		0BF55C182195413F0086AAF0 /* DiscountAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF55C172195413F0086AAF0 /* DiscountAccess.swift */; };
 		0BF55C1A2195417B0086AAF0 /* RideAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF55C192195417B0086AAF0 /* RideAccess.swift */; };
 		0BF55C1C2195418C0086AAF0 /* SwipeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF55C1B2195418C0086AAF0 /* SwipeResult.swift */; };
-		0BF55C1E219541A30086AAF0 /* DateEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF55C1D219541A30086AAF0 /* DateEditor.swift */; };
+		0BF55C1E219541A30086AAF0 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF55C1D219541A30086AAF0 /* Formatter.swift */; };
 		0BF55C20219541B80086AAF0 /* GeneratorError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF55C1F219541B80086AAF0 /* GeneratorError.swift */; };
 		0BF55C22219541C40086AAF0 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF55C21219541C40086AAF0 /* Test.swift */; };
 		0BF55C26219D30860086AAF0 /* PassGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF55C25219D30860086AAF0 /* PassGeneratorViewController.swift */; };
@@ -41,6 +43,8 @@
 		0B77EEEF21CEE42C00C89534 /* VendorPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorPass.swift; sourceTree = "<group>"; };
 		0B77EEF121CF4EEC00C89534 /* ProjectNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectNumbers.swift; sourceTree = "<group>"; };
 		0BBCF45C21A3A873006E8477 /* VendorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorType.swift; sourceTree = "<group>"; };
+		0BCB9F1621FCF9B60097182F /* GeneratedPassModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratedPassModel.swift; sourceTree = "<group>"; };
+		0BCB9F1821FD04850097182F /* UserStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStrings.swift; sourceTree = "<group>"; };
 		0BF55BF221953F390086AAF0 /* ParkPassGeneratorPart2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkPassGeneratorPart2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF55BF521953F390086AAF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BF55BFA21953F390086AAF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -58,7 +62,7 @@
 		0BF55C172195413F0086AAF0 /* DiscountAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountAccess.swift; sourceTree = "<group>"; };
 		0BF55C192195417B0086AAF0 /* RideAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideAccess.swift; sourceTree = "<group>"; };
 		0BF55C1B2195418C0086AAF0 /* SwipeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeResult.swift; sourceTree = "<group>"; };
-		0BF55C1D219541A30086AAF0 /* DateEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEditor.swift; sourceTree = "<group>"; };
+		0BF55C1D219541A30086AAF0 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		0BF55C1F219541B80086AAF0 /* GeneratorError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratorError.swift; sourceTree = "<group>"; };
 		0BF55C21219541C40086AAF0 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		0BF55C25219D30860086AAF0 /* PassGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassGeneratorViewController.swift; sourceTree = "<group>"; };
@@ -107,9 +111,10 @@
 				0BF55C24219543080086AAF0 /* Models */,
 				0BF55C23219541D00086AAF0 /* Model Enumerations */,
 				0BF55C1B2195418C0086AAF0 /* SwipeResult.swift */,
-				0BF55C1D219541A30086AAF0 /* DateEditor.swift */,
+				0BF55C1D219541A30086AAF0 /* Formatter.swift */,
 				0BF55C1F219541B80086AAF0 /* GeneratorError.swift */,
 				0BF55C21219541C40086AAF0 /* Test.swift */,
+				0BCB9F1821FD04850097182F /* UserStrings.swift */,
 			);
 			path = ParkPassGeneratorPart2;
 			sourceTree = "<group>";
@@ -139,6 +144,7 @@
 				0BF55C0D219540120086AAF0 /* GuestPass.swift */,
 				0B77EEED21CED90000C89534 /* ManagerPass.swift */,
 				0B77EEEF21CEE42C00C89534 /* VendorPass.swift */,
+				0BCB9F1621FCF9B60097182F /* GeneratedPassModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -214,7 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0BF55C1E219541A30086AAF0 /* DateEditor.swift in Sources */,
+				0BF55C1E219541A30086AAF0 /* Formatter.swift in Sources */,
 				0BF55C10219540250086AAF0 /* EmployeeType.swift in Sources */,
 				0BF55C1A2195417B0086AAF0 /* RideAccess.swift in Sources */,
 				0BF55C0A21953FD00086AAF0 /* Entrant.swift in Sources */,
@@ -224,11 +230,13 @@
 				0B77EEF021CEE42C00C89534 /* VendorPass.swift in Sources */,
 				0B77EEEE21CED90000C89534 /* ManagerPass.swift in Sources */,
 				0BF55C0821953FB70086AAF0 /* Pass.swift in Sources */,
+				0BCB9F1721FCF9B60097182F /* GeneratedPassModel.swift in Sources */,
 				0BF55C12219540340086AAF0 /* GuestType.swift in Sources */,
 				0BF55C2A219E74FE0086AAF0 /* StackViewButton.swift in Sources */,
 				0BF55C16219540CE0086AAF0 /* AreaAccess.swift in Sources */,
 				0BF55C1C2195418C0086AAF0 /* SwipeResult.swift in Sources */,
 				0BF55C26219D30860086AAF0 /* PassGeneratorViewController.swift in Sources */,
+				0BCB9F1921FD04850097182F /* UserStrings.swift in Sources */,
 				0B66110F21BA31AA00D171E2 /* PassViewController.swift in Sources */,
 				0BF55C0E219540120086AAF0 /* GuestPass.swift in Sources */,
 				0BF55C0C21953FE30086AAF0 /* EmployeePass.swift in Sources */,

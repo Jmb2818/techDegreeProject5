@@ -20,18 +20,19 @@ class PassViewController: UIViewController {
     @IBOutlet weak var swipePassResultView: UIView!
     
     
-    var pass: Pass?
+    var passModel: GeneratedPassModel?
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let pass = pass {
+        if let model = passModel {
             
-            passFullNameLabel.text = pass.fullName
-            passTypeLabel.text = pass.passType
-            foodDiscountLabel.text = "• Food \(pass.swipe(discountOn: .food).message)"
-            merchDiscountLabel.text = "• Merchandise \(pass.swipe(discountOn: .food).message)"
+            passFullNameLabel.text = model.fullname
+            passTypeLabel.text = model.passType
+            foodDiscountLabel.text = model.foodDiscount
+            merchDiscountLabel.text = model.merchDiscount
+            rideStatusLabel.isHidden = !model.rideAccess
 
         }
     }
@@ -42,19 +43,19 @@ class PassViewController: UIViewController {
     
     @IBAction func checkPass(_ sender: UIButton) {
         
-        guard let pass = pass else { return }
+        guard let model = passModel else { return }
         AreaAccess.allCases.forEach { current in
             if sender.restorationIdentifier == current.rawValue {
-                checkSwipeResult(pass.swipe(for: current))
+                checkSwipeResult(model.pass.swipe(for: current))
             }
         }
         DiscountAccess.allCases.forEach { current in
             if sender.restorationIdentifier == current.rawValue {
-                checkSwipeResult(pass.swipe(discountOn: current))
+                checkSwipeResult(model.pass.swipe(discountOn: current))
             }
         }
         if sender.restorationIdentifier == "rideAccess" {
-            checkSwipeResult(pass.swipe(rideAccess: .all))
+            checkSwipeResult(model.pass.swipe(rideAccess: .all))
         }
     }
     
